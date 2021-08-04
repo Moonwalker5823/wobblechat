@@ -8,7 +8,6 @@ function Chat({ currentChat }) {
   // Make a GET request to the backend whenever the currentChat chages,
   // to reset our chat window to display messages from that particular chat.
   useEffect(() => {
-    console.log("CURRENT CHAT IS ", currentChat);
     if (currentChat.questionId === null) return;
     setIsError(false);
     setIsLoading(false);
@@ -36,7 +35,7 @@ function Chat({ currentChat }) {
       {messages.length > 0 ? (
         <ul id="messages">
           {messages.map((message) => (
-            <li>{message}</li>
+            <li key={message.id}>{message.content}</li>
           ))}
         </ul>
       ) : (
