@@ -9,8 +9,6 @@ const globalErrorHandler = require("./routers/errors");
 const questionRouter = require("./routers/question.js");
 const messageRouter = require("./routers/message.js");
 
-// pull in secret
-require("dotenv").config();
 //parsing request body
 app.use(express.json());
 app.use(cookieParser());
