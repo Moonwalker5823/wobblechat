@@ -4,6 +4,7 @@
   "description": "An anonymous, lightweight chatroom for developers.",
   "main": "webpack.config.js",
   "scripts": {
+    "client:test": "NODE_ENV=test jest client",
     "test": "NODE_ENV=test jest --watch",
     "build": "NODE_ENV=production webpack",
     "start": "concurrently 'npm run client:start' 'npm run server:start'",
