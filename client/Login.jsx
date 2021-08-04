@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import auth from "./Auth";
 
-const Login = (props) => {
+const Login = () => {
   const [userData, setUserData] = useState({ username: "", password: "" });
   const history = useHistory();
 
@@ -35,7 +34,7 @@ const Login = (props) => {
         password: userData.password,
       }),
     })
-      .then((response) => {
+      .then((_response) => {
         history.push("/");
       })
       .catch((err) => {

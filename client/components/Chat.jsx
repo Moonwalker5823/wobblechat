@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-//import logo from './assets/chat_logo.png';
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 
 function Chat() {
-
   // var socket = io();
 
   // var messages = document.getElementById('messages');
@@ -30,31 +26,24 @@ function Chat() {
   //   messages.appendChild(item);
   //   window.scrollTo(0, document.body.scrollHeight);
   // });
-  
 
-    return (
-
-      <>
-
- 
- 
-
+  return (
+    <>
       <div className="App">
-      <ul id="messages">
-        <li>Message 1</li>
-        <li>Message 2</li>
-        <li>Message 3</li>
-        <li>Message 4</li>
-      </ul>
-    <form id="form-chat" action="">
-      <input id="input-chat" /><button>Send</button>
-    </form>
+        <ul id="messages">
+          <li>Message 1</li>
+          <li>Message 2</li>
+          <li>Message 3</li>
+          <li>Message 4</li>
+        </ul>
+        <form id="form-chat" action="">
+          <input id="input-chat" />
+          <button>Send</button>
+        </form>
       </div>
-
-
-</>
-
-    );
+    </>
+  );
 }
 
 export default Chat;
+

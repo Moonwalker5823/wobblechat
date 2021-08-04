@@ -31,11 +31,9 @@ class MainAppContainer extends Component {
       );
   }
 
+  // fix Warning: Can't perform a React state update on an unmounted component
   componentWillUnmount() {
-    // fix Warning: Can't perform a React state update on an unmounted component
-    this.setState = (state, callback) => {
-      return;
-    };
+    this.setState = () => {};
   }
 
   render() {
@@ -47,10 +45,8 @@ class MainAppContainer extends Component {
       );
 
     const { questions } = this.state;
-    //if fetch request retrieved nothing, there is nothing to display
     if (!questions) return null;
     if (!questions.length) {
-      // console.log(this.state);
       return <div>Sorry, no questions to display</div>;
     }
 
@@ -64,10 +60,7 @@ class MainAppContainer extends Component {
             <Link to={"/create"}>
               <Button variant="primary">Ask a question</Button>
             </Link>
-            &nbsp;&nbsp;
-            <Link to={"/logout"}>
-              <Button variant="secondary">Sign out</Button>
-            </Link>
+            <Button variant="secondary">Sign out</Button>
           </div>
         </div>
 
