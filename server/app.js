@@ -9,6 +9,8 @@ const globalErrorHandler = require("./routers/errors");
 const questionRouter = require("./routers/question.js");
 const messageRouter = require("./routers/message.js");
 
+// pull in secret
+require("dotenv").config();
 //parsing request body
 app.use(express.json());
 app.use(cookieParser());
@@ -18,15 +20,16 @@ app.get("/api/hello", (req, res) => {
   res.status(200).json({ hello: "world" });
 });
 
-app.use("/users", userRouter);
+app.use("/api/users", userRouter);
 app.use("/api/questions", questionRouter);
-app.use("/messages", messageRouter);
-// //route handler for main page
-// app.get('/', (req,res) => {
-//   res.sendFile(path.resolve(__dirname, '../client/index.html'));
-// });
+app.use("/api/messages", messageRouter);
 
-app.use(globalErrorHandler); // Added global error middlware
-app.listen(3000, () => {
-  console.log("Express server listening on port 3000.");
-});
+app.use(globalErrorHandler);
+
+const port = 3000;
+const server = app.listen(3000, () => console.log(`Listening on port ${port}`));
+
+module.exports = {
+  server,
+  app
+};
