@@ -8,7 +8,7 @@ userController.createUser = async (req, res, next) => {
   if (!username || !password)
     return next({
       status: 401,
-      message: "Invalid username or password.",
+      message: "Invalid username or password..",
     });
 
   // Create hashed version of password.
@@ -17,7 +17,7 @@ userController.createUser = async (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     hashedPassword = bcrypt.hashSync(password, salt);
   } catch (err) {
-    return next({ status: 500, message: err.message });
+    return next({ status: 500, message: err.message, message2: 'not working' });
   }
 
   // Save user to PostgreSQL database, using parameterized queries.
@@ -47,8 +47,10 @@ userController.loginUser = async (req, res, next) => {
   let user;
   try {
     const query = `SELECT * FROM users WHERE username=$1`;
+    // const query = `SELECT * FROM users`;
     const params = [username];
     const { rows } = await pool.query(query, params);
+    console.log(rows);
     if (rows.length < 1)
       return next({
         status: 401,
