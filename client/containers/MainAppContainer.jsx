@@ -9,7 +9,18 @@ const Main = () => {
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [questions, setQuestions] = useState([]);
+  const [currentChat, setCurrentChat] = useState({
+    questionId: null,
+    isopen: false,
+    creator: null,
+    questionId: null,
+  }); // Used to get the messages in the Chat component, and set the current chat inside the questions container
+
   const history = useHistory();
+
+  const handleSetCurrentChat = ({ url, isopen, creator, questionId }) => {
+    setCurrentChat({ id: questionId, url, isopen, creator });
+  };
 
   const handleLogout = () => {
     fetch("/api/users/logout", {
@@ -71,10 +82,13 @@ const Main = () => {
         </div>
       </div>
       <Card className="chat-style">
-        <Chat />
+        <Chat currentChat={currentChat} />
       </Card>
       <br />
-      <QuestionsContainer questions={questions} />
+      <QuestionsContainer
+        questions={questions}
+        handleSetCurrentChat={handleSetCurrentChat}
+      />
     </>
   );
 };
